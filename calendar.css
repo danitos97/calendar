@@ -1,0 +1,89 @@
+
+.calendario{
+    width: 320px;
+    background-color: white;
+    font-family:arial;
+    cursor: default;   
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing:border-box;
+padding-top:10px;
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+.calendario *{
+    margin:0;
+    padding:0;
+    border:0;
+    box-sizing:border-box;
+}
+.calendario .cal-head{
+
+    padding:0 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.calendario .texto{
+    cursor: pointer;
+}
+.calendario .flecha{
+    cursor: pointer;
+    float: right;
+}
+.calendario .flecha.arriba{
+    margin-right: 20px;
+}
+
+
+.calendario .cuadricula > div{
+    display: inline-block;
+    width: calc(100% / 7 - 2px);
+    text-align: center;
+    padding: 9px 0;
+    margin:1px;
+    border: 2px solid white;
+    color:black;
+}
+.calendario .semana{
+    font-size:12px;
+    font-weight: 700;
+}
+.calendario .dias{
+    font-size:15px;
+}
+.calendario .dias > div.hoy{
+    background-color: #c5553c;
+    color: white !important;
+    font-weight: bold;
+}
+.calendario .dias > div.selected{
+    border-color: orange;
+}
+.calendario .dias > div:not(.selected):not(.disable):hover{
+    border-color: gainsboro;
+}
+.calendario .dias > div.disable{
+    color:#aaa;
+}
+
+.calendario .meses{
+    padding: 10px;
+    padding-top: 0;
+}
+.calendario .meses > div{
+    display: inline-block;
+    width: calc(100% / 4 - 2px);
+    text-align: center;
+    padding: 25px 0;
+    margin:1px;
+    border: 2px solid white;
+    color:black;
+    vertical-align: middle;
+}
+.calendario .meses > div:not(.disable):hover{
+    border-color: gainsboro;
+}
