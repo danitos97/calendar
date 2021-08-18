@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,34 @@
     <title>Document</title>
     <link rel="stylesheet" href="calendar.css">
 </head>
-<body style='background-color:whitesmoke''>
-    <div class="calendar"  min="2018/10"  max="now"></div>
+<body>
+    <style>
+        main{
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background-color: aliceblue;
+        }
+    </style>
+    <main>
+        <div>
+            <div class="calendar"></div>
+            <br>
+            <div id="res"></div>  
+        </div>
+    </main>
+
     <script src="calendar.js"></script>
+
+    <script>
+        const calendar = document.getElementsByClassName("calendar")[0];
+        const resContainer = document.getElementById("res");
+        calendar.addEventListener("click", e =>{
+            if(dayChange(e)){
+                resContainer.innerHTML = getValue(calendar);
+            }
+        });
+    </script>
+
 </body>
 </html>

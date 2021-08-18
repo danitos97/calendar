@@ -8,37 +8,40 @@
     padding:0;
     border:0;
     box-sizing:border-box;
-padding-top:10px;
-user-select: none; /* standard syntax */
--webkit-user-select: none; /* webkit (safari, chrome) browsers */
--moz-user-select: none; /* mozilla browsers */
--khtml-user-select: none; /* webkit (konqueror) browsers */
--ms-user-select: none; /* IE10+ */
-    
+    padding-top:10px;
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
 }
+
 .calendar *{
     margin:0;
     padding:0;
     border:0;
     box-sizing:border-box;
 }
+
 .calendar .cal-head{
 
     padding:0 20px;
     text-align: center;
     margin-bottom: 10px;
 }
+
 .calendar .texto{
     cursor: pointer;
 }
+
 .calendar .flecha{
     cursor: pointer;
     float: right;
 }
+
 .calendar .flecha.arriba{
     margin-right: 20px;
 }
-
 
 .calendar .cuadricula > div{
     display: inline-block;
@@ -49,24 +52,30 @@ user-select: none; /* standard syntax */
     border: 2px solid white;
     color:black;
 }
+
 .calendar .semana{
     font-size:12px;
     font-weight: 700;
 }
+
 .calendar .dias{
     font-size:15px;
 }
+
 .calendar .dias > div.hoy{
     background-color: #c5553c;
     color: white !important;
     font-weight: bold;
 }
+
 .calendar .dias > div.selected{
     border-color: orange;
 }
+
 .calendar .dias > div:not(.selected):not(.disable):hover{
     border-color: gainsboro;
 }
+
 .calendar .dias > div.disable{
     color:#aaa;
 }
@@ -75,6 +84,7 @@ user-select: none; /* standard syntax */
     padding: 10px;
     padding-top: 0;
 }
+
 .calendar .meses > div{
     display: inline-block;
     width: calc(100% / 4 - 2px);
@@ -85,6 +95,7 @@ user-select: none; /* standard syntax */
     color:black;
     vertical-align: middle;
 }
+
 .calendar .meses > div:not(.disable):hover{
     border-color: gainsboro;
 }
