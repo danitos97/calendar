@@ -1,10 +1,39 @@
 
-const meses = ['enero', 'febrero', 'marzo'     , 'abril'  , 'mayo'     , 'junio'    ,
-               'julio', 'agosto' , 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-
-const diasSemana = ["LU", "MA", "MI", "JU", "VI", "SA", "DO"];
-
-const calendarios = document.getElementsByClassName("calendario");
+const meses = {
+    es:['enero'  ,'febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+    en:['january','february','march','abril','may','june' ,'july' ,'august','september' ,'october','november' ,'december'],
+    //indones
+    in:['Januari','Februari','Maret','April','Mei','Juni' ,'Juli' ,'Agustus','September','Oktober','November' ,'Desember'],
+    //portuguese
+    pt:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro' ,'dezembro'],
+    fr:['janvier','février','mars' ,'avril','mai' ,'juin' ,'juillet','août','septembre' ,'octobre','novembre' ,'décembre'],
+    ru:['январь' ,'февраль','март' ,'апрель','май','июнь' ,'июль'  ,'август','сентябрь' ,'октябрь','ноябрь'   ,'декабрь' ],
+    //Aleman - German
+    de:['Januar' ,'Februar','März' ,'April','Mai' ,'Juni' ,'Juli' ,'August','September' ,'Oktober','November' ,'Dezember'],
+    //Chinece fut
+    zh:['一 月'   ,'二 月'  ,'三 月','四 月','五 月','六 月','七 月'  ,'八 月','九 月'     ,'十 月'   ,'十一 月'  ,'十二 月'  ],
+    ja:['一 月'   ,'二 月'  ,'三 月','四 月','五 月','六 月','七 月'  ,'八 月','九 月'     ,'十 月'   ,'十一 月'  ,'十二 月'  ],
+    ar:['كَانُون ٱلثَّانِي','شُبَاط','آذَار','نَيْسَان','أَيَّار','حَزِيرَان','تَمُّوز','آب','أَيْلُول','تِشْرِين ٱلْأَوَّل','تِشْرِين ٱلثَّانِي','كَانُون ٱلْأَوَّل'],
+};
+//http://www.ichineselearning.com/easy-chinese/months-of-year.html
+const diasSemana = {
+    es:['LUN','MAR','MIE','JUE','VIE','SAB','DOM'],
+    en:['MON','TUE','WED','THU','FRI','SAT','SUN'],
+    in:['SEN','SEL','RAB','KAM','JUM','SAB','MIN'],
+    pt:['SEG','TER','QUA','QUI','SEX','SÁB','DOM'],
+    fr:['LUN','MAR','MER','JEU','VEN','SAM','DIM'],
+    ru:['ПНД','ВТР','СРД','ЧТВ','ПТН','СБТ','ВСК'],
+    de:['MO' ,'DI' ,'MI' ,'DO' ,'FR' ,'SA' ,'SO' ],
+    zh:['周一','周二','周三','周四','周五','周六','周日'],
+    ja:['月曜','火曜','水曜','木曜','金曜','曜日','日曜'],
+    ar:['الأثنين','الثلاثاء','الأربعاء','الخميس','الجمعه','السبت','الأحد']
+};
+const equiv = {
+    'id':'in',
+    'zh-Hans':'zh',
+    'zh-Hant':'zh'
+}
+const calendarios = document.getElementsByClassName("calendar");
 
 var fechaActual = new Date(); 
 
@@ -41,11 +70,30 @@ function cargarCalendario(cal) {
     if (mes - 1 > 0) diasMesAnterior = diasEnMes(mes - 1, anio);
     else diasMesAnterior = diasEnMes(12, anio - 1);
     cal.setAttribute("value", anio + "/" + fill(mes));
-    const rangoFlechaAbajo = anio + '/' + (state == "meses" ? '12' : fill(mes));
+    const rangoFlechaAbajo  = anio + '/' + (state == "meses" ? '12' : fill(mes));
     const rangoFlechaArriba = anio + '/' + (state == "meses" ? '01' : fill(mes));
+
+    let idioma = cal.getAttribute('languague');
+    const idiomaDocumento = document.documentElement.lang;
+ 
+    while(true){
+        if(idioma in meses)
+            break;
+        if(idioma in equiv){
+            idioma = equiv[idioma];
+            break;
+        }      
+        if(idioma != idiomaDocumento){
+            idioma = idiomaDocumento;
+            continue;
+        }
+        idioma = 'en'; //idioma por defecto
+        break;
+    }
+
     let html = '';
     html += `<div class="cal-head">
-                <span class="text" onclick="mostrarMeses(${id})">${(state == "meses" ? '' : meses[mes - 1] + ' de ') + anio}</span>
+                <span class="text" onclick="mostrarMeses(${id})">${(state == "meses" ? '' : meses[idioma][mes - 1] + ' ') + anio}</span>
                 <span cal-id="${id}" style="${max <= rangoFlechaAbajo ? 'display:none;' : ''} width:18px;" class="flecha abajo"  onclick="setCalendario(${id}, 1)">
                     <svg cal-id="${id}" class="flecha" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path cal-id="${id}" class="flecha" fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>
                 </span>
@@ -54,7 +102,7 @@ function cargarCalendario(cal) {
                 </span>
             </div><div class ="cuadricula semana" style="${state == 'meses' ? 'display:none' : ''}">`;
     for (let i = 0; i < 7; i++)
-        html += `<div>${diasSemana[i]}</div>`;
+        html += `<div>${diasSemana[idioma][i]}</div>`;
     html += `</div><div class="cuadricula dias" style="${state == 'meses' ? 'display:none' : ''}">`;
 
     for (let i = inicioMes; i > 1; i--)
@@ -73,16 +121,20 @@ function cargarCalendario(cal) {
                 className += " selected";
         }
         let day = '';
-        if (nextMes == 0) day = 'day = "' + anio + '/' + fill(mes) + '/' + fill(nDia) + '"';
-        html += `<div ${day} onclick="selectDia(this)" class="${className}"> ${nDia}</div>`;
+        if (nextMes == 0) day = anio + '/' + fill(mes) + '/' + fill(nDia);
+    
+        if(day > max)className = "disable";
+        html += `<div day = "${day}" onclick="selectDia(this)" class="${className}"> ${nDia}</div>`;
     }
 
     html += `</div><div class="meses" style="${state == 'meses' ? '' : 'display:none'}">`;
-    for (let i = 0; i < meses.length; i++) {
+    for (let i = 0; i < 12; i++) {
         const fecha = anio + '/' + fill(i + 1);
         const fueraDeRango = fecha < min || fecha > max;
         const extra = fueraDeRango ? 'class="disable"' : 'onclick="setMes(' + id + ',this)"';
-        html += `<div mes="${fecha}" ${extra} >${fueraDeRango ? '' : meses[i].substring(0, 3)}</div>`;
+        const mesString = idioma != 'ar'? meses[idioma][i].substring(0, 3) : meses['ar'][i];
+        const style = idioma == 'ar'? 'style="text-align:right"' :'';
+        html += `<div ${style} mes="${fecha}" ${extra} >${fueraDeRango ? '' : mesString}</div>`;
     }
     html += `</div>`;
 
