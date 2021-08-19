@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,20 +18,26 @@
     </style>
     <main>
         <div>
-            <div class="calendar"></div>
+            <div class="calendar" min="2018/08/16" max="2021/08/22"></div>
             <br>
             <div id="res"></div>  
         </div>
     </main>
 
     <script src="calendar.js"></script>
-
+    
     <script>
         const calendar = document.getElementsByClassName("calendar")[0];
         const resContainer = document.getElementById("res");
-        calendar.addEventListener("click", e =>{
+        calendar.addEventListener("click", function(e){
             if(dayChange(e)){
-                resContainer.innerHTML = getValue(calendar);
+                resContainer.innerHTML = getValue(this);
+            }
+            if(monthChange(e)){
+                console.log("month change");
+            }
+            if(yearChange(e)){
+                console.log("year change");
             }
         });
     </script>
