@@ -32,7 +32,7 @@ You can use the attributes min and max to limit the range of dates your calendar
 ```
 
 
-In this calendar, the user can only select a day in the current week. Since the whole range is in the current month, the calendar won't let the user change the month that is visualized by the calendar.
+In this calendar, the user can only select a day in that specific  week. Since the whole range is in the current month, the calendar won't let the user change the month that is visualized by the calendar.
 
 You can use the value "now" in both *min* and *max* attributes to set the current date as a limit.
 
