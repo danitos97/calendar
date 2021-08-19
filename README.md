@@ -19,8 +19,6 @@ To create a calendar, just place the class *calendar* in a div element.
 <div class="calendar"></div>
 ```
 
-<img  src="https://user-images.githubusercontent.com/87664764/130087564-39089723-456d-4790-b0ce-068c6ebd90fb.png" alt="standard calendar" width="200"/>
-
 **Note:** the checked box is the current date of the user computer.
 
 You can put as much calendars as you need in your page.
@@ -32,7 +30,7 @@ You can use the attributes min and max to limit the range of dates your calendar
 ```html
  <div class="calendar" min="2021/08/16" max="2021/08/22"></div>
 ```
-<img  src="https://user-images.githubusercontent.com/87664764/130093412-11dca0b9-6ec1-4711-a348-6b09ec5cc112.png" alt="calendar with the min and max attribute set" width="200"/>
+
 
 In this calendar, the user can only select a day in the current week. Since the whole range is in the current month, the calendar won't let the user change the month that is visualized by the calendar.
 
