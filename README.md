@@ -1,8 +1,6 @@
 # Calendar
 
-Html5 calendar that looks like the default on windows 10.
-
-Made with vanilla javascript and css
+Html5 calendar made with vanilla javascript and css.
 
 ## Installation
 
