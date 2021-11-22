@@ -1,7 +1,25 @@
+/* colors */
+
+.calendar .dias > div.hoy{
+    background-color: #403E34;
+    color: white !important;
+    font-weight: bold;
+}
+
+.calendar .dias > div.selected{
+    border-color: hsl(50, 50%, 33%);
+}
+
+.calendar .dias > div:not(.selected):not(.disable):hover{
+    border-color: gainsboro;
+}
+
+
+
 
 .calendar{
     width: 320px;
-    background-color: white;
+    background-color: rgba(255, 255, 255);
     font-family:arial;
     cursor: default;   
     margin:0;
@@ -30,9 +48,9 @@
     margin-bottom: 10px;
 }
 
-.calendar .texto{
+/* .calendar .texto{
     cursor: pointer;
-}
+} */
 
 .calendar .flecha{
     cursor: pointer;
@@ -62,19 +80,7 @@
     font-size:15px;
 }
 
-.calendar .dias > div.hoy{
-    background-color: #c5553c;
-    color: white !important;
-    font-weight: bold;
-}
 
-.calendar .dias > div.selected{
-    border-color: orange;
-}
-
-.calendar .dias > div:not(.selected):not(.disable):hover{
-    border-color: gainsboro;
-}
 
 .calendar .dias > div.disable{
     color:#aaa;

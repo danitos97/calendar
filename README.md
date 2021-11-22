@@ -73,8 +73,8 @@ $(".calendar").on("click",function(e) {
 
 ## Language support
 
-It has 10 different languagues by now. It automatically use the languague of your html *lang* attribute. Besides that, you can put the *languague* attribute to a calendar element to make it use that languague.
-The supported languagues are:
+It has 10 different languages by now. It automatically use the language of your html *lang* attribute. Besides that, you can put the *lang* attribute to a calendar element to make it use that language.
+The supported languages are:
 + en - english
 + es - spanish
 + in, id - indonesian
@@ -86,4 +86,4 @@ The supported languagues are:
 + ja - japanese
 + ar - arabic
 
-If the *lang* of the html tag is not supported and neither the *languague* attribute of the calendar, it will use english as default.
+If the *lang* of the html tag is not supported and neither the *language* attribute of the calendar, it will use english as default.

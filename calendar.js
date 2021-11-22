@@ -72,7 +72,7 @@ function cargarCalendarioCLD(cal) {
 
     cal.setAttribute("value", anio + "/" + fill(mes));
     
-    let idioma = cal.getAttribute('languague');
+    let idioma = cal.getAttribute('lang');
     const idiomaDocumento = document.documentElement.lang;
  
     while(true){
@@ -93,7 +93,7 @@ function cargarCalendarioCLD(cal) {
     const rangoFlechaArriba = anio + '/' + (state == "meses" ? '01' : fill(mes));
     let html = '';
     html += `<div class="cal-head">
-                <span class="text" onclick="mostrarMesesCLD(${id})">${(state == "meses" ? '' : mesesCLD[idioma][mes - 1] + ' ') + anio}</span>
+                <span class="textCLD" onclick="mostrarMesesCLD(${id})">${(state == "meses" ? '' : mesesCLD[idioma][mes - 1] + ' ') + anio}</span>
                 <span cal-id="${id}" style="${max <= (rangoFlechaAbajo + "/31") ? 'display:none;' : ''} width:18px;" class="flecha abajo"  onclick="setCalendarioCLD(${id}, 1)">
                     <svg cal-id="${id}" class="flecha" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path cal-id="${id}" class="flecha" fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>
                 </span>
